@@ -57,7 +57,7 @@ public class LibrosServicioImpl extends Conexion implements LibrosServicio {
 						rs.getString("descripcion"), 
 						rs.getString("autor"),
 						rs.getBigDecimal("precio"), 
-						rs.getBigDecimal("descuento").divide(new BigDecimal(10))));
+						rs.getBigDecimal("descuento")));
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
