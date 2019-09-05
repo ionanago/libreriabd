@@ -1,12 +1,11 @@
 package com.ipartek.formacion.mf0967_3.servicios;
-import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.TreeMap;
 
-import com.ipartek.formacion.mf0967_3.modelo.Libro;
 import com.ipartek.formacion.mf0967_3.accesodatos.Conexion;
+import com.ipartek.formacion.mf0967_3.modelo.Libro;
 
 public class LibrosServicioImpl extends Conexion implements LibrosServicio {
 
@@ -59,12 +58,11 @@ public class LibrosServicioImpl extends Conexion implements LibrosServicio {
 						rs.getBigDecimal("precio"), 
 						rs.getBigDecimal("descuento")));
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
-}
+		}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
