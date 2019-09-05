@@ -1,4 +1,5 @@
 package com.ipartek.formacion.mf0967_3.servicios;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -6,6 +7,8 @@ import java.util.TreeMap;
 
 import com.ipartek.formacion.mf0967_3.accesodatos.Conexion;
 import com.ipartek.formacion.mf0967_3.modelo.Libro;
+
+
 
 public class LibrosServicioImpl extends Conexion implements LibrosServicio {
 
@@ -28,6 +31,7 @@ public class LibrosServicioImpl extends Conexion implements LibrosServicio {
 		try {
 			s = super.con.createStatement();
 			String sql = "SELECT * FROM libreria_1.libros";
+			//String sql = "DELETE FROM libreria_1.libros WHERE id=?";
 			//SELECT * FROM libreria_1.libros;
 			 rs = s.executeQuery(sql);
 			
@@ -39,6 +43,20 @@ public class LibrosServicioImpl extends Conexion implements LibrosServicio {
 			return rs;
 		
 		}
+	public void borrarID(long id) {
+		 String sql ="DELETE FROM libros WHERE id=?";
+		
+		try (PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setLong(1,id);
+			ps.executeUpdate(sql);
+			} catch (SQLException e) {
+			
+				e.printStackTrace();
+			}
+		
+		
+	}
+	
 	
 	
 	private LibrosServicioImpl() {
@@ -92,6 +110,9 @@ public class LibrosServicioImpl extends Conexion implements LibrosServicio {
 		Long id = libros.lastKey() + 1;
 		libro.setId(id);
 		libros.put(id, libro);
+		//ResultSet rs = recorrerbd();
+		
+		
 	}
 
 	@Override
@@ -101,7 +122,10 @@ public class LibrosServicioImpl extends Conexion implements LibrosServicio {
 
 	@Override
 	public void deleteLibro(Long id) {
+		borrarID(id);
 		libros.remove(id);
+		
+		
 	}
 	
 }
