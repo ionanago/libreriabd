@@ -48,7 +48,7 @@ public class LibrosServicioImpl extends Conexion implements LibrosServicio {
 		
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
 			ps.setLong(1,id);
-			ps.executeUpdate(sql);
+			ps.executeUpdate();
 			} catch (SQLException e) {
 			
 				e.printStackTrace();
