@@ -40,7 +40,7 @@ public class LoginTreeMap extends Conexion implements LoginCrudAble {
 		try {
 			while(rs.next()) {
 				try {
-					logins.put(rs.getLong("id"), new Login(rs.getLong("id"), rs.getString("email"), rs.getString("password")));
+					logins.put(rs.getLong("id"), new Login(rs.getLong("id"), rs.getString("nombre"), rs.getString("password")));
 				} catch (SQLException e) {
 					
 					e.printStackTrace();

@@ -132,11 +132,13 @@ public class LibrosServicioImpl extends Conexion implements LibrosServicio {
 
 	@Override
 	public void insertLibro(Libro libro) {
+		addLibro(libro);
+		
+		
 		Long id = libros.lastKey() + 1;
 		libro.setId(id);
 		libros.put(id, libro);
-		addLibro(libro);
-
+	
 	}
 
 	@Override
